@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Game Puzzle</title>
+  <style>
+    .puzzle-piece {
+      display: block;
+      width: 400px;
+      height: 80px;
+      margin: 2px auto;
+      transition: box-shadow 0.3s;
+    }
+
+    .correct {
+      box-shadow: 0 0 15px red;
+    }
+  </style>
+</head>
+<body>
+
+  <img id="img1" class="puzzle-piece" src="http://demo.codegym.vn/8/puzzlegame/img/funny-cat1_part1x1.jpg" onclick="changeImage(this)">
+  <img id="img2" class="puzzle-piece" src="http://demo.codegym.vn/8/puzzlegame/img/funny-cat1_part2x1.jpg" onclick="changeImage(this)">
+  <img id="img3" class="puzzle-piece" src="http://demo.codegym.vn/8/puzzlegame/img/funny-cat1_part3x1.jpg" onclick="changeImage(this)">
+  <img id="img4" class="puzzle-piece" src="http://demo.codegym.vn/8/puzzlegame/img/funny-cat1_part4x1.jpg" onclick="changeImage(this)">
+  <img id="img5" class="puzzle-piece" src="http://demo.codegym.vn/8/puzzlegame/img/funny-cat1_part5x1.jpg" onclick="changeImage(this)">
+
+  <script>
+    const animals = [
+      "funny-cat1",
+      "monkey",
+      "panda_swap"
+    ];
+
+    function changeImage(img) {
+      let currentSrc = img.src;
+      let part = img.id.replace("img", ""); // lấy số thứ tự phần ảnh
+
+      // Tìm con vật hiện tại
+      let currentAnimal = animals.find(animal => currentSrc.includes(animal));
+      let nextAnimalIndex = (animals.indexOf(currentAnimal) + 1) % animals.length;
+      let nextAnimal = animals[nextAnimalIndex];
+
+      // Đổi ảnh
+      img.src = `http://demo.codegym.vn/8/puzzlegame/img/${nextAnimal}_part${part}x1.jpg`;
+
+      // Kiểm tra ghép đúng chưa
+      checkComplete();
+    }
+
+    function checkComplete() {
+      let baseAnimal = null;
+      let allMatch = true;
+
+      for (let i = 1; i <= 5; i++) {
+        let img = document.getElementById("img" + i);
+        let src = img.src;
+        let matchedAnimal = animals.find(animal => src.includes(animal));
+
+        if (i === 1) {
+          baseAnimal = matchedAnimal;
+        } else {
+          if (matchedAnimal !== baseAnimal) {
+            allMatch = false;
+          }
+        }
+      }
+
+      // Gán class để tạo viền nếu đúng
+      for (let i = 1; i <= 5; i++) {
+        let img = document.getElementById("img" + i);
+        if (allMatch) {
+          img.classList.add("correct");
+        } else {
+          img.classList.remove("correct");
+        }
+      }
+    }
+  </script>
+
+</body>
+</html>
+

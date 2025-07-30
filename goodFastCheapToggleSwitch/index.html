@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Good – Fast – Cheap</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      margin-top: 80px;
+    }
+
+    .switch-container {
+      margin: 20px auto;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+    }
+
+    .toggle {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+    }
+
+    .toggle input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0; left: 0;
+      right: 0; bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+      border-radius: 34px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 26px; width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: #2196F3;
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(26px);
+    }
+
+    .label {
+      font-size: 20px;
+      margin-top: 10px;
+    }
+
+    .option {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Good – Fast – Cheap</h1>
+
+  <div class="switch-container">
+    <div class="option">
+      <label class="toggle">
+        <input type="checkbox" id="good" onchange="handleToggle('good')">
+        <span class="slider"></span>
+      </label>
+      <span class="label">GOOD</span>
+    </div>
+
+    <div class="option">
+      <label class="toggle">
+        <input type="checkbox" id="fast" onchange="handleToggle('fast')">
+        <span class="slider"></span>
+      </label>
+      <span class="label">FAST</span>
+    </div>
+
+    <div class="option">
+      <label class="toggle">
+        <input type="checkbox" id="cheap" onchange="handleToggle('cheap')">
+        <span class="slider"></span>
+      </label>
+      <span class="label">CHEAP</span>
+    </div>
+  </div>
+
+  <script>
+    function handleToggle(changed) {
+      const good = document.getElementById("good");
+      const fast = document.getElementById("fast");
+      const cheap = document.getElementById("cheap");
+
+      // Logic: nếu có 2 cái đang bật, và vừa bật cái thứ 3 → tắt 1 cái cũ để giữ đúng 2
+
+      if (good.checked && fast.checked && cheap.checked) {
+        if (changed === "good") {
+          // GOOD vừa được bật → tắt CHEAP
+          cheap.checked = false;
+        } else if (changed === "fast") {
+          // FAST vừa được bật → tắt GOOD
+          good.checked = false;
+        } else if (changed === "cheap") {
+          // CHEAP vừa được bật → tắt FAST
+          fast.checked = false;
+        }
+      }
+    }
+  </script>
+
+</body>
+</html>
+

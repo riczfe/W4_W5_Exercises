@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Loop Practice</title>
+</head>
+<body>
+
+<script>
+  // Bài 1: In "The number is N" từ 0 đến 5
+  let output = "";
+  for (let i = 0; i <= 5; i++) {
+    output += "The number is " + i + "\n";
+  }
+  alert(output);
+
+  // Bài 2: Tính tổng từ 1 đến N
+  let n = parseInt(prompt("Nhập số nguyên > 0:"));
+  let sum = 0;
+  for (let i = 1; i <= n; i++) {
+    sum += i;
+  }
+  alert("Tổng từ 1 đến " + n + " là: " + sum);
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Do You Love Me</title>
+    <style>
+        body {
+            text-align: center;
+            margin-top: 100px;
+            font-family: Arial;
+        }
+        #noButton, #yesButton {
+            padding: 10px 20px;
+            font-size: 18px;
+            position: absolute;
+        }
+        #yesButton {
+            left: 40%;
+        }
+        #noButton {
+            left: 50%;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Do You Love Me? 🥺</h1>
+    <button id="yesButton" onclick="sayYes()">YES</button>
+    <button id="noButton" onmouseover="moveNo()">NO</button>
+
+    <script>
+        function sayYes() {
+            alert("<3");
+        }
+
+        function moveNo() {
+            const noBtn = document.getElementById("noButton");
+            const maxWidth = window.innerWidth - 100;
+            const maxHeight = window.innerHeight - 50;
+
+            const randomX = Math.random() * maxWidth;
+            const randomY = Math.random() * maxHeight;
+
+            noBtn.style.left = randomX + "px";
+            noBtn.style.top = randomY + "px";
+        }
+    </script>
+
+</body>
+</html>
+

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Số nguyên tố đầu tiên</title>
+</head>
+<body>
+
+<script>
+  let numbers = parseInt(prompt("Nhập số lượng số nguyên tố cần in:")); // Bước 1
+  let count = 0;   // Bước 2
+  let N = 2;       // Bước 3
+  let result = "";
+
+  while (count < numbers) { // Bước 4
+    let isPrime = true;
+    for (let i = 2; i <= Math.sqrt(N); i++) {
+      if (N % i === 0) {
+        isPrime = false;
+        break;
+      }
+    }
+
+    if (isPrime) {
+      result += N + " ";
+      count++;
+    }
+    N++;
+  }
+
+  alert("Các số nguyên tố đầu tiên: \n" + result);
+</script>
+
+</body>
+</html>
+

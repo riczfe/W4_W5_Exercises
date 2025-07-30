@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Bảng nhân 10x10</title>
+  <style>
+    table, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    td {
+      width: 40px;
+      height: 40px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<table id="board"></table>
+
+<script>
+  let table = document.getElementById("board");
+  for (let i = 1; i <= 10; i++) {
+    let row = table.insertRow();
+    for (let j = 1; j <= 10; j++) {
+      row.insertCell().innerText = i * j;
+    }
+  }
+</script>
+
+</body>
+</html>
+

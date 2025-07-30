@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>While Loop Practice</title>
+</head>
+<body>
+
+<script>
+  // Bài 1: Nhập số cho đến khi gặp -1, tính tổng
+  let total = 0;
+  let num = parseInt(prompt("Bài 1 - Nhập số (nhập -1 để kết thúc):"));
+
+  while (num !== -1) {
+    alert("Bạn vừa nhập: " + num);
+    total += num;
+    num = parseInt(prompt("Nhập số tiếp theo (hoặc -1 để kết thúc):"));
+  }
+
+  alert("Tổng các số đã nhập là: " + total);
+</script>
+
+<script>
+  // Bài 2: Hiển thị <hr> từ width 1 đến 100
+  let i = 1;
+  while (i <= 100) {
+    document.write("<hr width='" + i + "%'>");
+    i++;
+  }
+</script>
+
+</body>
+</html>

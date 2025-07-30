@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Move Ball</title>
+</head>
+<body>
+    <form>
+        <img id="myImage" src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Football_%28soccer_ball%29.svg"
+             style="width: 30%; position: relative; left: 0px;" />
+        <p>Click button below to move the image to right</p>
+        <input type="button" value="Click Me" onclick="moveRight()" />
+    </form>
+
+    <script>
+        function moveRight() {
+            const img = document.getElementById("myImage");
+            let currentLeft = parseInt(img.style.left) || 0;
+            img.style.left = (currentLeft + 20) + "px"; // mỗi lần +20px
+        }
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Số ngày trong tháng</title>
+</head>
+<body>
+
+    <input type="number" id="monthInput" placeholder="Nhập tháng (1-12)">
+    <button onclick="tinhSoNgay()">Tính số ngày</button>
+
+    <p id="result"></p>
+
+    <script>
+        function tinhSoNgay() {
+            const month = parseInt(document.getElementById("monthInput").value);
+            let days;
+
+            switch (month) {
+                case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+                    days = "có 31 ngày";
+                    break;
+                case 4: case 6: case 9: case 11:
+                    days = "có 30 ngày";
+                    break;
+                case 2:
+                    days = "có 28 hoặc 29 ngày";
+                    break;
+                default:
+                    days = "không hợp lệ";
+            }
+
+            document.getElementById("result").innerText = `Tháng ${month} ${days}`;
+        }
+    </script>
+
+</body>
+</html>
+
